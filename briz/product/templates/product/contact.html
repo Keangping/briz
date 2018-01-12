@@ -1,0 +1,25 @@
+{% extends 'product/base.html' %}
+{% block body %}
+{% load staticfiles %}
+
+<div class="blog-wrapper"> 
+        <div class="blog-news">
+                <div class="blog-news-image">
+                    <img src="{{ contact.mapImage.url }}" alt="">
+                </div>
+
+                <div class="blog-content-text">
+                    <p>{{ contact.address }}</p>  
+                </div>
+
+                <div class="blog-news-image">                    
+                    <img src="{{ contact.info.url }}" alt="">
+                </div>
+
+                <div class="blog-content-text">
+                    {{ contact.job|safe }}
+                </div>
+        </div>      
+</div>
+
+{% endblock %}

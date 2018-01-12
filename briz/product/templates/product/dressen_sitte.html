@@ -1,0 +1,24 @@
+{% extends 'product/base.html' %}
+{% block body %}
+{% load staticfiles %}
+
+<div class="blog-wrapper">
+    {% if tips %}   
+        <div class="blog-news">
+            {% for tip in tips %}
+                <div class="blog-news-image">
+                    <img class="blog-news-img" src="{{ tip.image.url }}" alt="">
+                </div>
+
+                <div class="blog-content-text">
+                    <h1>{{ tip.headline }}</h1>
+                    <p>{{ tip.tip_text }}</p>     
+                </div>
+            {% endfor %}
+        </div>      
+    {% else %}
+        <h1>No tips available</h1>
+    {% endif %}
+</div>
+
+{% endblock %}

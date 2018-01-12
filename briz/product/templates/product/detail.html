@@ -1,0 +1,60 @@
+{% extends 'product/base.html' %}
+{% block body %}
+{% load staticfiles %}
+
+<div class="product-wrapper">
+
+    <div class="product-news1">
+        <div class="product-news-image1">
+            <!-- need to fix the arrow, try using index instead of id -->
+            {% if pre %}
+            <a href="{% url 'product:detail' product.product_type pre.id %}" class="arrow left-arrow"><img
+                    src="{% static 'product/images/arrow-93-24.png' %}" width="19"
+                    height="36" alt=""/></a>
+            {% endif %}
+            {% if next %}
+            <a href="{% url 'product:detail' product.product_type next.id %}" class="arrow right-arrow"><img
+                    src="{% static 'product/images/arrow-29-24.png' %}"
+                    width="19" height="36" alt=""/></a>
+            {% endif %}
+            <div class="product-news-image-middle1">
+                <img src="{{ product.image.url }}" alt=""/>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="product-content">
+        <div class="product-content-text">
+            {{ product.content }}
+        </div>
+    </div>
+
+    <div class="product-gallery">
+        <div class="product-gallery-image">
+            {% for product in gallery %}
+                <div class="image-element">
+                    <div class="image-element-1">
+                        <a href="{% url 'product:detail' product.product_type product.id %}">
+                            <img class="img-rounded"
+                                 src="{{ product.image.url }}"
+                                 alt="..." />
+                        </a>
+                    </div>
+                    <div class="image-element-2">
+                        <p>{{ product.title }}</p>
+                        <br>
+
+                        <p>{{ product.content }}</p>
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+   
+</div>
+<!-- end wrapper -->
+
+
+{% endblock %}
